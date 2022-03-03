@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>定位推广后台登录</title>
-<%@include file="js.jsp"%>
+<%@include file="inc/js.jsp"%>
 <style>
 .beg-login-box {
 	width: 450px;
