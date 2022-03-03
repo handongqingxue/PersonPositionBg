@@ -10,4 +10,6 @@ public interface NewService {
 
 	List<New> queryList(String title, int page, int rows, String sort, String order);
 
+	int add(New n);
+
 }

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,12 @@ public class WebContentController {
 	@Autowired
 	private NewService newService;
 	public static final String MODULE_NAME="/background/webContent";
+	
+	@RequestMapping(value="/new/new")
+	public String goNewNew(HttpServletRequest request) {
+		
+		return MODULE_NAME+"/new/new";
+	}
 	
 	@RequestMapping(value="/new/list")
 	public String goNewList() {
@@ -39,5 +47,13 @@ public class WebContentController {
 		jsonMap.put("rows", newList);
 		
 		return jsonMap;
+	}
+	
+	@RequestMapping(value="/newNew")
+	public String newNew(New n) {
+		
+		newService.add(n);
+		
+		return MODULE_NAME+"/new/list";
 	}
 }

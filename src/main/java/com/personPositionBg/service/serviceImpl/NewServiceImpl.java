@@ -27,4 +27,10 @@ public class NewServiceImpl implements NewService {
 		return newDao.queryList(title, (page-1)*rows, rows, sort, order);
 	}
 
+	@Override
+	public int add(New n) {
+		// TODO Auto-generated method stub
+		return newDao.add(n);
+	}
+
 }

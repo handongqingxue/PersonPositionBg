@@ -12,4 +12,6 @@ public interface NewMapper {
 
 	List<New> queryList(@Param("title") String title, @Param("rowNum") int rowNum, @Param("rows") int rows, String sort, String order);
 
+	int add(New n);
+
 }

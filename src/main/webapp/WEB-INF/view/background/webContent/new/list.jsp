@@ -49,7 +49,7 @@ function initAddLB(){
 	$("#add_but").linkbutton({
 		iconCls:"icon-add",
 		onClick:function(){
-			location.href=wzglPath+"wzcx/new";
+			location.href=webContentPath+"new/new";
 		}
 	});
 }
@@ -87,7 +87,6 @@ function initTab1(){
 				data.total=0;
 			}
 
-			$(".panel-header").css("background","linear-gradient(to bottom,#F4F4F4 0,#F4F4F4 20%)");
 			$(".panel-header .panel-title").css("color","#000");
 			$(".panel-header .panel-title").css("font-size","15px");
 			$(".panel-header .panel-title").css("padding-left","10px");

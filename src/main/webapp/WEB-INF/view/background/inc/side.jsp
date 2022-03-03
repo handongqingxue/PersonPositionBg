@@ -82,10 +82,8 @@
 			<a>定位推广后台</a>
 		</div>
 		<ul class="layui-nav layui-layout-right">
-			<li class="layui-nav-item"><a href="javascript:;"> 
-				<img src="${sessionScope.merchant.logo }" class="layui-nav-img">
-					${sessionScope.merchant.userName }
-				</a>
+			<li class="layui-nav-item">
+				<a href="javascript:;">${sessionScope.user.userName }</a>
 			</li>
 			<li class="layui-nav-item"><a href="<%=basePath%>background/exit">退出</a>
 			</li>

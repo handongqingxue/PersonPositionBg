@@ -17,4 +17,26 @@
 		order by createTime
 		limit #{rowNum},#{rows}
 	</select>
+	<insert id="add" parameterType="com.personPositionBg.entity.New">
+		insert into new
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="title!=null">
+				title,
+			</if>
+			<if test="content!=null">
+				content,
+			</if>
+				createTime
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="title!=null">
+				#{title},
+			</if>
+			<if test="content!=null">
+				#{content},
+			</if>
+				now()
+		</trim>
+	</insert>
  </mapper>
