@@ -62,6 +62,38 @@ function initRemoveLB(){
 	});
 }
 
+function deleteByIds() {
+	var rows=tab1.datagrid("getSelections");
+	if (rows.length == 0) {
+		$.messager.alert("提示","请选择要删除的信息！","warning");
+		return false;
+	}
+	
+	$.messager.confirm("提示","确定要删除吗？",function(r){
+		if(r){
+			var ids = "";
+			for (var i = 0; i < rows.length; i++) {
+				ids += "," + rows[i].id;
+			}
+			ids=ids.substring(1);
+			
+			$.post(webContentPath + "deleteNew",
+				{ids:ids},
+				function(result){
+					if(result.status==1){
+						alert(result.msg);
+						tab1.datagrid("load");
+					}
+					else{
+						alert(result.msg);
+					}
+				}
+			,"json");
+			
+		}
+	});
+}
+
 function initTab1(){
 	tab1=$("#tab1").datagrid({
 		title:"新闻查询",
@@ -71,7 +103,7 @@ function initTab1(){
 		pagination:true,
 		pageSize:10,
 		columns:[[
-			{field:"title",title:"标题",width:200},
+			{field:"title",title:"标题",width:300},
 			{field:"createTime",title:"创建时间",width:200},
             {field:"id",title:"操作",width:110,formatter:function(value,row){
             	var newHref=webContentPath+"new/";

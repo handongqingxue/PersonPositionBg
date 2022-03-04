@@ -24,10 +24,10 @@
 		<property name="loginUrl" value="/background/login" />
 		<property name="filterChainDefinitions">
 			<value>
+				/background/test=anon
 				/background/regist=anon
 				/background/login/captcha=anon
-				/phone/*=anon
-				/JSSDK/*=anon
+				/foreground/*=anon
 				/resource/**=anon
 				/**=authc
 			</value>

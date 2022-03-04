@@ -16,4 +16,6 @@ public interface NewService {
 
 	int edit(New n);
 
+	int deleteByIds(String ids);
+
 }

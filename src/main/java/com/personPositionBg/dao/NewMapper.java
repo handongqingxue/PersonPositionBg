@@ -18,4 +18,6 @@ public interface NewMapper {
 
 	int edit(New n);
 
+	int deleteByIds(List<String> idList);
+
 }

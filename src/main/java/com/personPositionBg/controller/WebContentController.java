@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.personPositionBg.entity.*;
 import com.personPositionBg.service.*;
+import com.personPositionBg.util.*;
 
 @Controller
 @RequestMapping(WebContentController.MODULE_NAME)
@@ -44,6 +45,16 @@ public class WebContentController {
 		return MODULE_NAME+"/new/list";
 	}
 	
+	@RequestMapping(value="/new/detail")
+	public String goNewDetail(HttpServletRequest request) {
+		
+		String id = request.getParameter("id");
+		New n = newService.selectById(id);
+		request.setAttribute("n", n);
+		
+		return MODULE_NAME+"/new/detail";
+	}
+	
 	@RequestMapping(value="/queryNewList")
 	@ResponseBody
 	public Map<String, Object> queryNewList(String title,int page,int rows,String sort,String order) {
@@ -73,5 +84,25 @@ public class WebContentController {
 		int i=newService.edit(n);
 		
 		return MODULE_NAME+"/new/list";
+	}
+
+	@RequestMapping(value="/deleteNew",produces="plain/text; charset=UTF-8")
+	@ResponseBody
+	public String deleteNew(String ids) {
+		//TODO 针对分类的动态进行实时调整更新
+		int count=newService.deleteByIds(ids);
+		PlanResult plan=new PlanResult();
+		String json;
+		if(count==0) {
+			plan.setStatus(0);
+			plan.setMsg("删除新闻失败");
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		else {
+			plan.setStatus(1);
+			plan.setMsg("删除新闻成功");
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		return json;
 	}
 }

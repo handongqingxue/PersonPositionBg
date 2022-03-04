@@ -54,4 +54,10 @@
 		</trim>
 		where id=#{id}
 	</update>
+	<delete id="deleteByIds">
+		delete from new where 1=1
+		<foreach collection="list" item="id" open=" and cast(id as char) in (" separator="," close=")">
+		#{id}
+		</foreach>
+	</delete>
  </mapper>

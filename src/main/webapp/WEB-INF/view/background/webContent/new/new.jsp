@@ -27,7 +27,6 @@ KindEditor.ready(function(K) {
 });
 
 var path='<%=basePath %>';
-var webContentPath=path+'background/webContent/';
 var dialogTop=20;
 var dialogLeft=20;
 var ndNum=0;

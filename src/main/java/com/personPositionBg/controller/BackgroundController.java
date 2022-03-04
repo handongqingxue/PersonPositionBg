@@ -27,6 +27,15 @@ public class BackgroundController {
 	public static final String MODULE_NAME="/background";
 	
 	/**
+	 * 跳转至测试页面
+	 * @return
+	 */
+	@RequestMapping(value="/test")
+	public String test() {
+		return MODULE_NAME+"/test";
+	}
+	
+	/**
 	 * 跳转至登录页面
 	 * @return
 	 */
