@@ -14,4 +14,8 @@ public interface NewMapper {
 
 	int add(New n);
 
+	New selectById(String id);
+
+	int edit(New n);
+
 }

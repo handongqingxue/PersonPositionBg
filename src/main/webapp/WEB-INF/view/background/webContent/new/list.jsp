@@ -38,9 +38,8 @@ function initSearchLB(){
 	$("#search_but").linkbutton({
 		iconCls:"icon-search",
 		onClick:function(){
-			var mc=$("#toolbar #mc_inp").val();
-			var wzlxmc=$("#toolbar #wzlxmc_inp").val();
-			tab1.datagrid("load",{mc:mc,wzlxmc:wzlxmc});
+			var title=$("#toolbar #title_inp").val();
+			tab1.datagrid("load",{title:title});
 		}
 	});
 }
@@ -75,8 +74,9 @@ function initTab1(){
 			{field:"title",title:"标题",width:200},
 			{field:"createTime",title:"创建时间",width:200},
             {field:"id",title:"操作",width:110,formatter:function(value,row){
-            	var str="<a href=\"edit?id="+value+"\">编辑</a>&nbsp;&nbsp;"
-            		+"<a href=\"detail?id="+value+"\">详情</a>";
+            	var newHref=webContentPath+"new/";
+            	var str="<a href=\""+newHref+"edit?id="+value+"\">编辑</a>&nbsp;&nbsp;"
+            		+"<a href=\""+newHref+"detail?id="+value+"\">详情</a>";
             	return str;
             }}
 	    ]],

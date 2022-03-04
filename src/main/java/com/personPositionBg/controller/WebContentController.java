@@ -28,6 +28,16 @@ public class WebContentController {
 		return MODULE_NAME+"/new/new";
 	}
 	
+	@RequestMapping(value="/new/edit")
+	public String goNewEdit(HttpServletRequest request) {
+		
+		String id = request.getParameter("id");
+		New n = newService.selectById(id);
+		request.setAttribute("n", n);
+		
+		return MODULE_NAME+"/new/edit";
+	}
+	
 	@RequestMapping(value="/new/list")
 	public String goNewList() {
 		
@@ -53,6 +63,14 @@ public class WebContentController {
 	public String newNew(New n) {
 		
 		newService.add(n);
+		
+		return MODULE_NAME+"/new/list";
+	}
+	
+	@RequestMapping(value="/newEdit")
+	public String newEdit(New n) {
+		
+		int i=newService.edit(n);
 		
 		return MODULE_NAME+"/new/list";
 	}

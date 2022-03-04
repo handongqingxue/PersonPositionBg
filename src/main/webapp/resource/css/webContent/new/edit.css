@@ -1,0 +1,16 @@
+.center_con_div{
+	height: 90vh;
+	margin-left:205px;
+	position: absolute;
+}
+.page_location_div{
+	height: 50px;
+	line-height: 50px;
+	margin-top: 10px;
+	margin-left: 20px;
+	font-size: 18px;
+}
+.title_inp{
+	width: 600px;
+	height:30px;
+}

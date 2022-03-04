@@ -33,4 +33,16 @@ public class NewServiceImpl implements NewService {
 		return newDao.add(n);
 	}
 
+	@Override
+	public New selectById(String id) {
+		// TODO Auto-generated method stub
+		return newDao.selectById(id);
+	}
+
+	@Override
+	public int edit(New n) {
+		// TODO Auto-generated method stub
+		return newDao.edit(n);
+	}
+
 }

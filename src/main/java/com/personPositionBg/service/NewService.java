@@ -12,4 +12,8 @@ public interface NewService {
 
 	int add(New n);
 
+	New selectById(String id);
+
+	int edit(New n);
+
 }
