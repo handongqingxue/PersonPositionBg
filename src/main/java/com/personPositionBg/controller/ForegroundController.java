@@ -70,7 +70,7 @@ public class ForegroundController {
 	public void getNewById(String id, HttpServletResponse response) {
 		//https://blog.csdn.net/east123321/article/details/80402295
 		try {
-			System.out.println("id==="+id);
+			//System.out.println("id==="+id);
 			New n = newService.selectById(id);
 			String jsonpCallback=null;
 			if(n==null) {
@@ -93,10 +93,5 @@ public class ForegroundController {
 			str = str.replaceAll("\\\"", "\\\\\\\'");
 		}
 		return str;
-	}
-	
-	public static void main(String[] args) {
-		String s="化工生产安全保障难已是行业共识越来越多的企业开始部署精准的<a href=\"http://www.hualingdw.com\">化工厂人员定位系统</a>来提高工厂安全管理水平从而达到工厂安全生产的目的\r\n";
-		System.out.println(s.replaceAll("\\\"", "\\\\\\\'"));
 	}
 }
