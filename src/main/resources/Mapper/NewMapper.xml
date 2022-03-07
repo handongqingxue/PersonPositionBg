@@ -10,11 +10,11 @@
 		</if>
 	</select>
 	<select id="queryList" resultType="com.personPositionBg.entity.New">
-		select * from new where 1=1
+		select *,DATE_FORMAT(createTime,'%Y-%m-%d') createTimeYmd from new where 1=1
 		<if test="title!=''&amp;title!=null">
 			and title like CONCAT('%',#{title},'%')
 		</if>
-		order by createTime
+		order by createTime desc
 		limit #{rowNum},#{rows}
 	</select>
 	<insert id="add" parameterType="com.personPositionBg.entity.New">

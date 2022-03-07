@@ -3,6 +3,7 @@ package com.personPositionBg.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,42 @@ public class ForegroundController {
 	@Autowired
 	private NewService newService;
 	public static final String MODULE_NAME="/foreground";
+
+	@RequestMapping(value="/getNewList")
+	@ResponseBody
+	public void getNewList(int page,int rows,HttpServletResponse response) {
+		try {
+			List<New> newList=newService.queryList(null, page, rows, null, null);
+			String jsonpCallback=null;
+			if(newList.size()==0) {
+				jsonpCallback="jsonpCallback(\"{\\\"status\\\":\\\"no\\\"}\")";
+			}
+			else {
+				StringBuilder newListSB=new StringBuilder();
+				newListSB.append("[");
+				int newListSize = newList.size();
+				for (int i = 0; i <newListSize ; i++) {
+					New n = newList.get(i);
+					newListSB.append("{\\\"id\\\":\\\"");
+					newListSB.append(n.getId());
+					newListSB.append("\\\",\\\"title\\\":\\\"");
+					newListSB.append(n.getTitle());
+					newListSB.append("\\\",\\\"createTimeYmd\\\":\\\"");
+					newListSB.append(n.getCreateTimeYmd());
+					if(i<newListSize-1)
+						newListSB.append("\\\"},");
+					else
+						newListSB.append("\\\"}");
+				}
+				newListSB.append("]");
+				jsonpCallback="jsonpCallback(\"{\\\"status\\\":\\\"ok\\\",\\\"list\\\":"+newListSB.toString()+"}\")";
+			}
+			response.getWriter().print(jsonpCallback);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@RequestMapping(value="/getNewById")
 	@ResponseBody

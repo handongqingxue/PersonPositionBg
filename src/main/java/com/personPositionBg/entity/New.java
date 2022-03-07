@@ -27,7 +27,14 @@ public class New {
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
+	public String getCreateTimeYmd() {
+		return createTimeYmd;
+	}
+	public void setCreateTimeYmd(String createTimeYmd) {
+		this.createTimeYmd = createTimeYmd;
+	}
 	private String title;
 	private String content;
 	private String createTime;
+	private String createTimeYmd;
 }
